@@ -3,7 +3,7 @@
 	"name": "Folder Graph",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Automatically connect files in Graph View based on folder structure, without cluttering your actual folders. (Uses a shadow index system). （自动基于文件夹结构连接图谱，且不弄乱你的原始文件夹。使用影子索引系统。）",
+	"description": "Visualize folder structure in Graph View using a shadow index system.",
 	"author": "YhhhZzzzzz",
 	"authorUrl": "https://github.com/YhhhZzzzzz",
 	"fundingUrl": "https://ko-fi.com/hangyuan",
