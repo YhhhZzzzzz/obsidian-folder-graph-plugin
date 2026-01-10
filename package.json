@@ -1,0 +1,29 @@
+{
+	"name": "obsidian-folder-graph-plugin",
+	"version": "1.0.0",
+	"description": "Automatically connect files in Graph View based on folder structure, without cluttering your actual folders. (Uses a shadow index system). （自动基于文件夹结构连接图谱，且不弄乱你的原始文件夹。使用影子索引系统。）",
+	"main": "main.js",
+	"type": "module",
+	"scripts": {
+		"dev": "node esbuild.config.mjs",
+		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"version": "node version-bump.mjs && git add manifest.json versions.json",
+		"lint": "eslint ."
+	},
+	"keywords": [],
+	"license": "0-BSD",
+	"devDependencies": {
+		"@types/node": "^16.11.6",
+		"esbuild": "0.25.5",
+		"eslint-plugin-obsidianmd": "0.1.9",
+		"globals": "14.0.0",
+		"tslib": "2.4.0",
+		"typescript": "^5.8.3",
+		"typescript-eslint": "8.35.1",
+		"@eslint/js": "9.30.1",
+		"jiti": "2.6.1"
+	},
+	"dependencies": {
+		"obsidian": "latest"
+	}
+}
