@@ -159,8 +159,6 @@ class GraphLinkerSettingTab extends PluginSettingTab {
 			.setName('影子文件夹名称')
 			.setDesc('存放索引文件的目录')
 			.addText(text => text
-				// eslint-disable-next-line obsidianmd/ui/sentence-case
-				.setPlaceholder('_GraphMaps')
 				.setValue(this.plugin.settings.mapFolderName)
 				.onChange(async (value) => {
 					this.plugin.settings.mapFolderName = value;
@@ -173,7 +171,6 @@ class GraphLinkerSettingTab extends PluginSettingTab {
 			.setDesc('给生成的索引文件加个前缀，防止重名')
 			.addText(text => text
 
-				.setPlaceholder('Map_')
 				.setValue(this.plugin.settings.prefix)
 				.onChange(async (value) => {
 					this.plugin.settings.prefix = value;
