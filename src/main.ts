@@ -1,4 +1,4 @@
-import { App, Plugin, PluginSettingTab, Setting, TAbstractFile, TFile, TFolder, Notice, Vault, debounce } from 'obsidian';
+import { App, Plugin, PluginSettingTab, Setting, TAbstractFile, TFile, TFolder, Vault, debounce } from 'obsidian';
 
 // === 设置接口 ===
 interface GraphLinkerSettings {
@@ -25,9 +25,9 @@ export default class FolderGraphPlugin extends Plugin {
 		// 命令：强制重建
 		this.addCommand({
 			id: 'rebuild-graph-map',
-			name: 'Force Rebuild (强制重建影子图谱)',
+			name: 'Force rebuild (强制重建影子图谱)',
 			callback: () => {
-				this.generateGraphMap();
+				this.generateGraphMap().catch((err) => console.error(err));
 			}
 		});
 
@@ -121,7 +121,7 @@ ${links.join("\n")}
 	}
 
 	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData() as GraphLinkerSettings);
 	}
 
 	async saveSettings() {
@@ -141,7 +141,7 @@ class GraphLinkerSettingTab extends PluginSettingTab {
 	display(): void {
 		const { containerEl } = this;
 		containerEl.empty();
-		containerEl.createEl('h2', { text: 'Folder Graph 设置' });
+
 
 		// 1. 自动更新开关
 		new Setting(containerEl)
@@ -159,6 +159,7 @@ class GraphLinkerSettingTab extends PluginSettingTab {
 			.setName('影子文件夹名称')
 			.setDesc('存放索引文件的目录')
 			.addText(text => text
+				// eslint-disable-next-line obsidianmd/ui/sentence-case
 				.setPlaceholder('_GraphMaps')
 				.setValue(this.plugin.settings.mapFolderName)
 				.onChange(async (value) => {
@@ -169,8 +170,9 @@ class GraphLinkerSettingTab extends PluginSettingTab {
 		// 3. 【补回】前缀设置
 		new Setting(containerEl)
 			.setName('索引文件前缀')
-			.setDesc('给生成的索引文件加个前缀，防止重名 (例如 Map_)')
+			.setDesc('给生成的索引文件加个前缀，防止重名')
 			.addText(text => text
+
 				.setPlaceholder('Map_')
 				.setValue(this.plugin.settings.prefix)
 				.onChange(async (value) => {

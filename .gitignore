@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Operating System files
+.DS_Store
+
+# IDE/Editor configurations
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Stale/Legacy build artifacts in root (since we use dist/)
+main.js
+
+# Agentic workflow documentation
+AGENTS.md
